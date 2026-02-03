@@ -1,0 +1,33 @@
+name: Always Pass (Demo)
+
+on:
+  workflow_dispatch:  # Manual trigger only
+  schedule:
+    - cron: '0 12 * * 1'  # Runs every Monday at 12:00 PM UTC
+
+jobs:
+  demo-success:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+    
+    - name: Always Succeed
+      run: |
+        echo "🚀 This workflow always succeeds!"
+        echo ""
+        echo "Project: Three-Tier DevOps Application"
+        echo "Status: Active and maintained"
+        echo "Last updated: $(date)"
+        echo "Components:"
+        echo "  • Frontend: Nginx dashboard"
+        echo "  • Backend: Node.js API"
+        echo "  • Database: MongoDB"
+        echo "  • Infrastructure: Docker, Kubernetes-ready"
+        echo ""
+        echo "✅ Perfect for demonstrating CI/CD pipelines!"
+        echo "✅ Shows automated workflow execution"
+        echo "✅ No dependencies or secrets required"

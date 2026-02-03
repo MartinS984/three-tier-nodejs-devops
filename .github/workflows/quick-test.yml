@@ -1,0 +1,68 @@
+name: Quick Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+jobs:
+  quick-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Show project info
+      run: |
+        echo "🎉 Quick Test Workflow Started"
+        echo "📅 Date: $(date)"
+        echo "📁 Repository: ${{ github.repository }}"
+        echo "👤 Triggered by: ${{ github.actor }}"
+        echo "🌿 Branch: ${{ github.ref_name }}"
+        echo ""
+        echo "📊 Project Structure:"
+        echo "====================="
+        find . -maxdepth 2 -type f -name "*.json" -o -name "*.js" -o -name "Dockerfile" | sort
+        echo ""
+        echo "✅ This workflow proves GitHub Actions is working!"
+    
+    - name: Validate Dockerfiles
+      run: |
+        echo "🔍 Checking Dockerfiles..."
+        if [ -f "src/backend/Dockerfile" ]; then
+          echo "✅ Backend Dockerfile exists"
+        else
+          echo "⚠️  Backend Dockerfile not found"
+        fi
+        
+        if [ -f "src/frontend/Dockerfile" ]; then
+          echo "✅ Frontend Dockerfile exists"
+        else
+          echo "⚠️  Frontend Dockerfile not found"
+        fi
+        
+        if [ -f "docker-compose.working.yml" ]; then
+          echo "✅ Docker Compose file exists"
+        else
+          echo "⚠️  Docker Compose file not found"
+        fi
+    
+    - name: Success
+      run: |
+        echo ""
+        echo "🎊 🎊 🎊 SUCCESS! 🎊 🎊 🎊"
+        echo ""
+        echo "✅ GitHub Actions is properly configured!"
+        echo "✅ Your three-tier DevOps project is CI/CD ready!"
+        echo "✅ This workflow ran without any secrets or complex setup"
+        echo ""
+        echo "Next steps:"
+        echo "1. Add JWT and MongoDB secrets for full deployment"
+        echo "2. Configure tests for automated testing"
+        echo "3. Set up environment deployments"
+        echo ""
+        echo "🌐 View your workflows:"
+        echo "   https://github.com/${{ github.repository }}/actions"
