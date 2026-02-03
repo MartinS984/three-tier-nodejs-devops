@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: three-tier-app
+
+commonLabels:
+  app: three-tier-app
+  version: v1.0.0
+
+resources:
+  - ../common/namespace.yaml
+  - ../common/config/app-config.yaml
+  - ../common/secrets/mongodb-secrets.yaml
+  - ../common/secrets/app-secrets.yaml
+  - ../common/deployments/mongodb.yaml
+  - ../common/deployments/backend.yaml
+  - ../common/deployments/frontend.yaml
+  - ../common/services/mongodb.yaml
+  - ../common/services/backend.yaml
+  - ../common/services/frontend.yaml
+  - ../common/ingress/main.yaml
+
+images:
+  - name: backend
+    newName: ${BACKEND_IMAGE_REPO}
+    newTag: ${BACKEND_IMAGE_TAG}
+  - name: frontend
+    newName: ${FRONTEND_IMAGE_REPO}
+    newTag: ${FRONTEND_IMAGE_TAG}
+
+configMapGenerator:
+  - name: app-config
+    literals:
+      - node-env=${NODE_ENV}
+      - mongo-database=${MONGO_DATABASE}
+      - app-name=${APP_NAME}
+
+secretGenerator:
+  - name: mongodb-secrets
+    literals:
+      - root-username=${MONGO_ROOT_USERNAME}
+      - root-password=${MONGO_ROOT_PASSWORD}
+  - name: app-secrets
+    literals:
+      - jwt-secret=${JWT_SECRET}

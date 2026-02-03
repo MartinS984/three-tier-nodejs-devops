@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: three-tier-app
+
+bases:
+  - ../../base
+
+patchesStrategicMerge:
+  - deployment-patches.yaml
+
+images:
+  - name: backend
+    newName: ghcr.io/${GITHUB_USERNAME}/backend
+    newTag: ${VERSION}
+  - name: frontend
+    newName: ghcr.io/${GITHUB_USERNAME}/frontend
+    newTag: ${VERSION}
+
+configMapGenerator:
+  - name: app-config
+    behavior: merge
+    literals:
+      - node-env=production
