@@ -1,0 +1,11 @@
+deployment_branch_policy:
+  protected_branches: true
+  custom_branch_policies: false
+environment_variables:
+  NODE_ENV: production
+  K8S_NAMESPACE: three-tier-app
+  DOMAIN: example.com
+secrets:
+  KUBECONFIG_PROD: ${{ secrets.KUBECONFIG_PROD }}
+  JWT_SECRET: ${{ secrets.JWT_SECRET_PROD }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_PROD }}

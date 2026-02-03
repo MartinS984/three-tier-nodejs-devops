@@ -1,0 +1,11 @@
+deployment_branch_policy:
+  protected_branches: false
+  custom_branch_policies: true
+environment_variables:
+  NODE_ENV: development
+  K8S_NAMESPACE: three-tier-app-dev
+  DOMAIN: dev.example.com
+secrets:
+  KUBECONFIG_DEV: ${{ secrets.KUBECONFIG_DEV }}
+  JWT_SECRET: ${{ secrets.JWT_SECRET_DEV }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_DEV }}
