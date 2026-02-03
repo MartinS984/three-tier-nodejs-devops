@@ -281,10 +281,12 @@ GitHub Actions - CI/CD automation
 
 ---
 
-<div align="center">
-  
+### 🏆 Project Stats
+
 **Built with ❤️ by [MartinS984](https://github.com/MartinS984)**
 
 [![Star History Chart](https://api.star-history.com/svg?repos=MartinS984/three-tier-nodejs-devops&type=Date)](https://star-history.com/#MartinS984/three-tier-nodejs-devops&Date)
 
-</div>
+---
+
+⭐ **Star this repository** if you find it useful!
