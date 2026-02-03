@@ -279,9 +279,12 @@ Nginx - High performance web server
 
 GitHub Actions - CI/CD automation
 
+---
+
 <div align="center">
-Built with ❤️ by MartinS984
+  
+**Built with ❤️ by [MartinS984](https://github.com/MartinS984)**
 
-https://api.star-history.com/svg?repos=MartinS984/three-tier-nodejs-devops&type=Date
+[![Star History Chart](https://api.star-history.com/svg?repos=MartinS984/three-tier-nodejs-devops&type=Date)](https://star-history.com/#MartinS984/three-tier-nodejs-devops&Date)
 
-</div> ```
+</div>
